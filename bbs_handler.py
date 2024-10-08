@@ -79,6 +79,7 @@ def load_content():
             user_name = r.json()["post_stream"]["posts"][count]["username"]
             while uinfo['bbsUsername'] != user_name:
                 count -= 1
+                user_name = r.json()["post_stream"]["posts"][count]["username"]
                 print("SKIP other comment: {} -> {}".format(user_name, uinfo['bbsUsername']))
                 
             topic_id = r.json()["post_stream"]["posts"][count]["topic_id"]
@@ -157,4 +158,4 @@ def send_content():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5001)
